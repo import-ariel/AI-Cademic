@@ -1,3 +1,5 @@
+import streamlit as st
+
 # Setting up environment variables
 openai_api_key = st.secrets["openai"]["api_key"]
 pinecone_api_key = st.secrets["pinecone"]["api_key"]
@@ -8,7 +10,7 @@ pc = Pinecone(api_key=pinecone_api_key)
 
 myindex=pc.Index('ai-cademic')
 
-with open (r'dicembed.json', 'r') as file:
+with open (r'data/dicembed.json', 'r') as file:
     dic_embed=json.load(file)
 
 def get_embedding(text, model="text-embedding-3-small"):
